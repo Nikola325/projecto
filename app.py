@@ -12,7 +12,6 @@ st.header("Добави нова игра")
 
 name = st.text_input("Име на играта")
 description = st.text_area("Описание")
-image_url = st.text_input("URL на изображение")
 genre = st.selectbox("Жанр", ["Action", "RPG", "Shooter", "Adventure", "Open World"])
 
 if st.button("Добави"):
@@ -20,7 +19,6 @@ if st.button("Добави"):
         st.session_state.games.append({
             "име": name,
             "описание": description,
-            "картинка": image_url,
             "жанр": genre
         })
         st.success(f"{name} е добавена!")
@@ -47,7 +45,6 @@ st.header("Галерия")
 if st.session_state.games:
     for g in st.session_state.games:
         st.subheader(g["име"])
-        st.image(g["картинка"], use_container_width=True)
         st.write(f"Жанр: {g['жанр']}")
         st.write(g["описание"])
         st.markdown("---")
@@ -60,19 +57,16 @@ if st.button("Добави примерни AAA игри"):
         {
             "име": "The Witcher 3",
             "описание": "Отворен свят RPG с история за Гералт.",
-            "картинка": "https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg",
             "жанр": "RPG"
         },
         {
             "име": "GTA V",
             "описание": "Open-world екшън игра в Лос Сантос.",
-            "картинка": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
             "жанр": "Open World"
         },
         {
             "име": "Call of Duty",
             "описание": "Популярен FPS шутър.",
-            "картинка": "https://upload.wikimedia.org/wikipedia/en/5/5f/Call_of_Duty_cover.jpg",
             "жанр": "Shooter"
         }
     ])
