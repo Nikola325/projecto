@@ -1,14 +1,14 @@
 import streamlit as st
 
 # Заглавие
-st.title("🎮 Галерия на AAA игри")
+st.title("Галерия на игри")
 
 # Списък с игри (session state)
 if "games" not in st.session_state:
     st.session_state.games = []
 
 # Добавяне на нова игра
-st.header("➕ Добави нова игра")
+st.header("Добави нова игра")
 
 name = st.text_input("Име на играта")
 description = st.text_area("Описание")
@@ -29,7 +29,7 @@ if st.button("Добави"):
 
 # Премахване на игра
 if st.session_state.games:
-    st.header("❌ Премахни игра")
+    st.header("Премахни игра")
 
     names = [g["име"] for g in st.session_state.games]
     remove_name = st.selectbox("Избери игра", names)
@@ -42,13 +42,13 @@ if st.session_state.games:
         st.success(f"{remove_name} е премахната!")
 
 # Галерия
-st.header("🖼️ Галерия")
+st.header("Галерия")
 
 if st.session_state.games:
     for g in st.session_state.games:
         st.subheader(g["име"])
         st.image(g["картинка"], use_container_width=True)
-        st.write(f"🎮 Жанр: {g['жанр']}")
+        st.write(f"Жанр: {g['жанр']}")
         st.write(g["описание"])
         st.markdown("---")
 else:
